@@ -27,6 +27,8 @@
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- sweet alert js library -->
+       <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
    </head>
    <body>
       <div class="header_section">
@@ -67,43 +69,58 @@
       <!-- header section end -->
       <!-- layout_border start -->
       <div class="container-fluid">
-         <div class="layout_border">
-            <!-- contact section start -->
-            <div class="contact_section layout_padding">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-sm-12">
-                        <h1 class="contact_taital">Get In Touch</h1>
+   <div class="layout_border">
+      <!-- contact section start -->
+      <div class="contact_section layout_padding">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <h1 class="contact_taital">Get In Touch</h1>
+               </div>
+            </div>
+         </div>
+         <div class="container">
+            <div class="contact_section_2">
+               <div class="row">
+                  <div class="col-md-6">
+                     <div class="mail_section_1">
+                        <form action="https://formsubmit.co/3cbcf09fc5a00758f3a45f37c16238fd" method="POST" onsubmit="return showPopup()">
+                           <!-- Form Inputs -->
+                           <input type="text" class="mail_text" placeholder="Name" name="name" required>
+                           <input type="text" class="mail_text" placeholder="Phone Number" name="phone" required>
+                           <input type="email" class="mail_text" placeholder="Email" name="email" required>
+                           <textarea class="massage-bt" placeholder="Message" rows="5" name="message" required></textarea>
+
+                           <!-- Hidden Inputs for security and behavior -->
+                           <input type="hidden" name="_captcha" value="false">
+                           <input type="hidden" name="_template" value="table">
+                           <input type="hidden" name="_subject" value="New Contact Form Submission from KhodaAgro">
+                           <input type="hidden" name="_autoresponse" value="Thank you for contacting KhodaAgro! We have received your message.">
+                           <input type="hidden" name="_next" value="index.html">
+
+                           <!-- Visible and Styled SEND Button -->
+                           <div class="send_bt">
+                              <button type="submit" style="padding: 10px 30px; background-color: #28a745; color: white; border: none; font-size: 16px; border-radius: 5px; cursor: pointer;">
+                                 SEND
+                              </button>
+                           </div>
+                        </form>
                      </div>
                   </div>
-               </div>
-               <div class="container">
-                  <div class="contact_section_2">
-                     <div class="row">
-                        <div class="col-md-6">
-                           <div class="mail_section_1">
-                              <input type="text" class="mail_text" placeholder="Name" name="Name">
-                              <input type="text" class="mail_text" placeholder="Phone Number" name="Phone Number"> 
-                              <input type="text" class="mail_text" placeholder="Email" name="Email">
-                              <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
-                              <div class="send_bt"><a href="#">SEND</a></div>
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="map_main">
-                              <div class="map-responsive">
-                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1847652.0782204776!2d73.53492736816409!3d25.247180194609925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396f9b06f72c8579%3A0x84a059c83940a3c9!2sKhoda%20Agriculture%20Farm!5e0!3m2!1sen!2sin!4v1752829474412!5m2!1sen!2sin" width="600" height="340" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>                              </div>
-                              </div>
-                           </div>
+                  <div class="col-md-6">
+                     <div class="map_main">
+                        <div class="map-responsive">
+                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1847652.0782204776!2d73.53492736816409!3d25.247180194609925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396f9b06f72c8579%3A0x84a059c83940a3c9!2sKhoda%20Agriculture%20Farm!5e0!3m2!1sen!2sin!4v1752829474412!5m2!1sen!2sin" width="600" height="340" frameborder="0" style="border:0; width: 100%;" allowfullscreen=""></iframe>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
-            <!-- contact section end -->
-            <!-- layout_border end -->
          </div>
       </div>
+      <!-- contact section end -->
+   </div>
+</div>
       <!-- footer section start -->
       <div class="footer_section layout_padding">
          <div class="container">
@@ -175,10 +192,34 @@
       </div>
       <!-- copyright section end -->
       <!-- Javascript files-->
+       <!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
       <script src="js/jquery-3.0.0.min.js"></script>
       <script src="js/plugin.js"></script>
+      <script>
+   function showPopup() {
+      Swal.fire({
+         icon: 'success',
+         title: 'Message Sent!',
+         text: 'Thank you! Your message has been sent.',
+         confirmButtonText: 'OK'
+      }).then(() => {
+         Swal.fire({
+            icon: 'info',
+            title: 'Check Your Email 📬',
+            text: 'Please check your inbox or spam folder for confirmation.',
+            confirmButtonText: 'Got it!'
+         });
+      });
+
+      return true;
+   }
+</script>
+
+
    </body>
 </html>
